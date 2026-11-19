@@ -1,0 +1,2401 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#8B4A2B">
+  <meta name="description" content="Media pembelajaran Sejarah kelas X SMA: jenis sumber dan kritik sumber.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="SumberKu">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20512%20512%22%3E%3Crect%20width%3D%22512%22%20height%3D%22512%22%20rx%3D%2296%22%20fill%3D%22%238B4A2B%22%2F%3E%3Cg%20transform%3D%22translate(96%2C96)%20scale(13.33)%22%20fill%3D%22none%22%20stroke%3D%22%23FBF7EE%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M8%2021h12a2%202%200%200%200%202-2v-2H10v2a2%202%200%201%201-4%200V5a2%202%200%201%200-4%200v3h4%22%2F%3E%3Cpath%20d%3D%22M19%2017V5a2%202%200%200%200-2-2H4%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
+  <title>SumberKu: Latihan Kritik Sumber Sejarah</title>
+  <style>
+    /* ==========================================================================
+       VARIABEL WARNA & TIPOGRAFI (TEMA ARSIP SEPIA)
+       ========================================================================== */
+    :root {
+      --bg-paper: #F5EEDF;
+      --bg-card: #FBF7EE;
+      --text-ink: #2B2118;
+      --text-muted: #6B5B49;
+      --accent-sepia: #8B4A2B;
+      --accent-sepia-dark: #6D381F;
+      --accent-moss: #3E5C4A;
+      --accent-gold: #B58A3C;
+      --border-line: #D9CBB2;
+      --danger: #9E2A2B;
+      --bg-tint-sepia: #EFE3CE;
+      --bg-tint-moss: #E4ECE7;
+      --bg-tint-danger: #F6E4E4;
+      --font-serif: Georgia, Palatino, "Times New Roman", serif;
+      --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    /* ==========================================================================
+       RESET & DASAR AKSESIBILITAS
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #E6DEC8;
+      color: var(--text-ink);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--accent-sepia);
+      outline-offset: 2px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* ==========================================================================
+       STRUKTUR KOLOM MOBILE-FIRST (MAKSIMAL 448PX)
+       ========================================================================== */
+    .app-shell {
+      width: 100%;
+      max-width: 448px;
+      min-height: 100vh;
+      background-color: var(--bg-paper);
+      border-left: 1px solid var(--border-line);
+      border-right: 1px solid var(--border-line);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .app-header {
+      background-color: var(--bg-card);
+      border-bottom: 1px solid var(--border-line);
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      width: 36px;
+      height: 36px;
+      background-color: var(--accent-sepia);
+      color: var(--bg-card);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .brand-title {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: bold;
+      color: var(--text-ink);
+      line-height: 1.2;
+    }
+
+    .brand-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .app-main {
+      flex: 1;
+      padding: 16px 16px 88px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* ==========================================================================
+       NAVIGASI BAWAH TETAP
+       ========================================================================== */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      max-width: 446px;
+      background-color: var(--bg-card);
+      border-top: 1px solid var(--border-line);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      z-index: 30;
+    }
+
+    .nav-btn {
+      min-height: 56px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 600;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      cursor: pointer;
+    }
+
+    .nav-btn[aria-current="page"] {
+      color: var(--accent-sepia);
+      background-color: var(--bg-tint-sepia);
+      border-top: 3px solid var(--accent-sepia);
+    }
+
+    /* ==========================================================================
+       TIPOGRAFI & KOMPONEN KARTU
+       ========================================================================== */
+    h1, h2, h3 {
+      font-family: var(--font-serif);
+      color: var(--text-ink);
+    }
+
+    h1 {
+      font-size: 1.35rem;
+      line-height: 1.3;
+    }
+
+    h1:focus {
+      outline: none;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+
+    h3 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-line);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .card-tint {
+      background-color: var(--bg-tint-sepia);
+      border: 1px solid var(--border-line);
+      border-radius: 8px;
+      padding: 14px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--border-line);
+      background-color: var(--bg-paper);
+      color: var(--text-ink);
+    }
+
+    .badge-primer {
+      background-color: var(--bg-tint-sepia);
+      border-color: var(--accent-sepia);
+      color: var(--accent-sepia-dark);
+    }
+
+    .badge-sekunder {
+      background-color: var(--bg-tint-moss);
+      border-color: var(--accent-moss);
+      color: var(--accent-moss);
+    }
+
+    .badge-done {
+      background-color: var(--accent-moss);
+      border-color: var(--accent-moss);
+      color: var(--bg-card);
+    }
+
+    /* ==========================================================================
+       TOMBOL & INPUT (TARGET SENTUH MINIMAL 48PX)
+       ========================================================================== */
+    .btn {
+      min-height: 48px;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid transparent;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background-color: var(--accent-sepia);
+      color: var(--bg-card);
+      border-color: var(--accent-sepia);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-sepia-dark);
+    }
+
+    .btn-secondary {
+      background-color: var(--bg-card);
+      color: var(--text-ink);
+      border-color: var(--border-line);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--bg-tint-sepia);
+    }
+
+    .btn-moss {
+      background-color: var(--accent-moss);
+      color: var(--bg-card);
+      border-color: var(--accent-moss);
+    }
+
+    .btn-danger {
+      background-color: var(--danger);
+      color: var(--bg-card);
+      border-color: var(--danger);
+    }
+
+    .btn-block {
+      width: 100%;
+    }
+
+    .btn:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    .input-field {
+      width: 100%;
+      min-height: 48px;
+      padding: 10px 12px;
+      border: 1px solid var(--border-line);
+      border-radius: 6px;
+      background-color: var(--bg-paper);
+      color: var(--text-ink);
+      font-family: var(--font-sans);
+      font-size: 1rem;
+    }
+
+    /* ==========================================================================
+       BILAH PROGRES & KISI MENU
+       ========================================================================== */
+    .progress-track {
+      width: 100%;
+      height: 10px;
+      background-color: var(--border-line);
+      border-radius: 99px;
+      overflow: hidden;
+      margin: 8px 0;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background-color: var(--accent-moss);
+      transition: width 0.25s ease;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .menu-tile {
+      min-height: 104px;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-line);
+      border-radius: 8px;
+      padding: 14px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      text-align: left;
+      cursor: pointer;
+      color: var(--text-ink);
+    }
+
+    .menu-tile:hover {
+      background-color: var(--bg-tint-sepia);
+      border-color: var(--accent-sepia);
+    }
+
+    .tile-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 6px;
+      background-color: var(--bg-tint-sepia);
+      color: var(--accent-sepia);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+    }
+
+    .tile-title {
+      font-family: var(--font-serif);
+      font-weight: bold;
+      font-size: 1rem;
+      display: block;
+    }
+
+    .tile-desc {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: block;
+      margin-top: 2px;
+    }
+
+    /* ==========================================================================
+       FILTER GALERI & KISI KARTU SUMBER
+       ========================================================================== */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .filter-chip {
+      min-height: 48px;
+      padding: 8px 14px;
+      border-radius: 6px;
+      border: 1px solid var(--border-line);
+      background-color: var(--bg-card);
+      color: var(--text-ink);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .filter-chip[aria-pressed="true"] {
+      background-color: var(--accent-sepia);
+      color: var(--bg-card);
+      border-color: var(--accent-sepia);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .gallery-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-line);
+      border-radius: 8px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: left;
+      cursor: pointer;
+      min-height: 140px;
+    }
+
+    .gallery-card:hover {
+      border-color: var(--accent-sepia);
+      background-color: var(--bg-tint-sepia);
+    }
+
+    /* ==========================================================================
+       TAHAPAN UJI SUMBER & UMPAN BALIK
+       ========================================================================== */
+    .stepper {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+
+    .step-item {
+      padding: 8px 6px;
+      border-radius: 6px;
+      border: 1px solid var(--border-line);
+      background-color: var(--bg-card);
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    .step-item.active {
+      background-color: var(--accent-sepia);
+      color: var(--bg-card);
+      border-color: var(--accent-sepia);
+    }
+
+    .step-item.completed {
+      background-color: var(--bg-tint-moss);
+      color: var(--accent-moss);
+      border-color: var(--accent-moss);
+    }
+
+    .choice-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .choice-row-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .choice-btn {
+      min-height: 48px;
+      padding: 10px 8px;
+      border-radius: 6px;
+      border: 1px solid var(--border-line);
+      background-color: var(--bg-paper);
+      color: var(--text-ink);
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .choice-btn.selected {
+      background-color: var(--accent-sepia);
+      color: var(--bg-card);
+      border-color: var(--accent-sepia);
+    }
+
+    .choice-btn.correct-ans {
+      background-color: var(--bg-tint-moss);
+      border-color: var(--accent-moss);
+      color: var(--accent-moss);
+    }
+
+    .choice-btn.wrong-ans {
+      background-color: var(--bg-tint-danger);
+      border-color: var(--danger);
+      color: var(--danger);
+    }
+
+    .feedback-box {
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid var(--border-line);
+      font-size: 0.9rem;
+    }
+
+    .feedback-box.ok {
+      background-color: var(--bg-tint-moss);
+      border-color: var(--accent-moss);
+      color: var(--text-ink);
+    }
+
+    .feedback-box.bad {
+      background-color: var(--bg-tint-danger);
+      border-color: var(--danger);
+      color: var(--text-ink);
+    }
+
+    .feedback-head {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+
+    /* ==========================================================================
+       ELEMEN KHAS SATU-SATUNYA: STEMPEL HASIL UJI SUMBER
+       ========================================================================== */
+    @keyframes stampDrop {
+      0% {
+        opacity: 0;
+        transform: scale(1.45) rotate(-10deg);
+      }
+      70% {
+        opacity: 1;
+        transform: scale(0.96) rotate(-2deg);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) rotate(-3deg);
+      }
+    }
+
+    .stamp-board {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin: 14px 0;
+    }
+
+    .stamp {
+      display: inline-block;
+      padding: 8px 14px;
+      border: 3px double currentColor;
+      border-radius: 4px;
+      font-family: var(--font-serif);
+      font-weight: bold;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transform: rotate(-3deg);
+      animation: stampDrop 0.42s ease-out forwards;
+    }
+
+    .stamp-valid {
+      color: var(--accent-moss);
+      background-color: var(--bg-tint-moss);
+    }
+
+    .stamp-invalid {
+      color: var(--danger);
+      background-color: var(--bg-tint-danger);
+    }
+
+    /* ==========================================================================
+       LENCANA & DIALOG KONFIRMASI
+       ========================================================================== */
+    .badge-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .badge-card {
+      border: 1px solid var(--border-line);
+      border-radius: 8px;
+      padding: 12px;
+      background-color: var(--bg-paper);
+      opacity: 0.6;
+    }
+
+    .badge-card.unlocked {
+      opacity: 1;
+      background-color: var(--bg-card);
+      border-color: var(--accent-gold);
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(43, 33, 24, 0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 50;
+    }
+
+    .modal-backdrop[hidden] {
+      display: none !important;
+    }
+
+    /* ==========================================================================
+       SPLASH SCREEN AWAL APLIKASI
+       ========================================================================== */
+    .splash-screen {
+      position: fixed;
+      inset: 0;
+      background-color: var(--bg-paper);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+      z-index: 100;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+
+    .splash-screen.fade-out {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .splash-emblem {
+      width: 72px;
+      height: 72px;
+      background-color: var(--accent-sepia);
+      color: var(--bg-card);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      border: 2px solid var(--accent-gold);
+    }
+
+    .splash-emblem svg {
+      width: 40px;
+      height: 40px;
+    }
+
+    .splash-title {
+      font-family: var(--font-serif);
+      font-size: 1.75rem;
+      font-weight: bold;
+      color: var(--text-ink);
+      margin-bottom: 6px;
+    }
+
+    .splash-sub {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 280px;
+      margin-bottom: 24px;
+    }
+
+    .splash-bar {
+      width: 160px;
+      height: 6px;
+      background-color: var(--border-line);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .splash-bar-fill {
+      width: 100%;
+      height: 100%;
+      background-color: var(--accent-sepia);
+      transform-origin: left;
+      animation: splashLoad 1.1s ease-out forwards;
+    }
+
+    @keyframes splashLoad {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+
+    .modal-box {
+      width: 100%;
+      max-width: 390px;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-line);
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+
+    .row-between {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .stack-sm {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .stack-md {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .text-muted {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- SPLASH SCREEN AWAL -->
+  <div id="splash-screen" class="splash-screen" role="status" aria-label="Memuat aplikasi SumberKu">
+    <div class="splash-emblem" id="splash-logo" aria-hidden="true"></div>
+    <div class="splash-title">SumberKu</div>
+    <div class="splash-sub">Media Pembelajaran &amp; Latihan Kritik Sumber Sejarah</div>
+    <div class="splash-bar" aria-hidden="true">
+      <div class="splash-bar-fill"></div>
+    </div>
+  </div>
+
+  <div class="app-shell">
+    <!-- HEADER APLIKASI -->
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-logo" id="header-logo" aria-hidden="true"></div>
+        <div>
+          <div class="brand-title">SumberKu</div>
+          <div class="brand-sub">Latihan Kritik Sumber Sejarah</div>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; gap:6px;">
+        <button type="button" id="btn-install-header" class="btn btn-secondary" style="min-height:48px; padding:6px 10px; font-size:0.8rem;" hidden aria-label="Install Aplikasi">
+          Install
+        </button>
+        <span class="badge" id="header-points">0 Poin</span>
+      </div>
+    </header>
+
+    <!-- PENGUMUMAN UMPAN BALIK UNTUK PEMBACA LAYAR -->
+    <div id="live-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- KONTEN UTAMA -->
+    <main id="app-main" class="app-main"></main>
+
+    <!-- NAVIGASI BAWAH TETAP -->
+    <nav class="bottom-nav" aria-label="Navigasi utama">
+      <button type="button" class="nav-btn" data-nav="beranda" id="nav-beranda">
+        <span id="icon-nav-beranda" aria-hidden="true"></span>
+        <span>Beranda</span>
+      </button>
+      <button type="button" class="nav-btn" data-nav="profil" id="nav-profil">
+        <span id="icon-nav-profil" aria-hidden="true"></span>
+        <span>Profil</span>
+      </button>
+      <button type="button" class="nav-btn" data-nav="bantuan" id="nav-bantuan">
+        <span id="icon-nav-bantuan" aria-hidden="true"></span>
+        <span>Bantuan</span>
+      </button>
+    </nav>
+
+    <!-- DIALOG KONFIRMASI HAPUS PROGRES -->
+    <div id="confirm-modal" class="modal-backdrop" hidden role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-box stack-md">
+        <h2 id="modal-title">Hapus Semua Progres?</h2>
+        <p>Semua materi selesai, skor Uji Sumber, skor kuis, dan lencana akan diatur ulang ke nol. Tindakan ini tidak dapat dibatalkan.</p>
+        <div class="choice-row-2">
+          <button type="button" class="btn btn-secondary" data-action="close-modal">Batal</button>
+          <button type="button" class="btn btn-danger" data-action="confirm-reset">Ya, Hapus</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIALOG PEMASANGAN / PANDUAN LAYAR UTAMA -->
+    <div id="install-modal" class="modal-backdrop" hidden role="dialog" aria-modal="true" aria-labelledby="install-modal-title">
+      <div class="modal-box stack-md">
+        <div class="row-between">
+          <h2 id="install-modal-title">Pasang SumberKu</h2>
+          <span class="badge badge-done" id="install-status-badge">Siap Luring</span>
+        </div>
+        <p id="install-modal-desc">Aplikasi telah disimpan ke cache perangkat sehingga dapat diakses tanpa koneksi internet.</p>
+        <div id="install-modal-hint" class="card-tint text-muted" style="font-size:0.85rem;"></div>
+        <button type="button" class="btn btn-primary btn-block" data-action="close-install-modal">Mengerti</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* ==========================================================================
+       BAGIAN 1: DATA KONTEN PEMBELAJARAN & IKON SVG
+       (Guru dapat menyunting teks pada bagian ini tanpa mengubah logika aplikasi)
+       ========================================================================== */
+
+    const ICONS = {
+      buku: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>',
+      kacaPembesar: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',
+      perisai: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+      surat: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,6 12,13 2,6"/></svg>',
+      kamera: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>',
+      gulungan: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h12a2 2 0 0 0 2-2v-2H10v2a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v3h4"/><path d="M19 17V5a2 2 0 0 0-2-2H4"/></svg>',
+      koin: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10"/><path d="M9 10h6"/><path d="M9 14h6"/></svg>',
+      candi: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V9l7-6 7 6v12"/><path d="M9 21v-6h6v6"/><path d="M8 9h8"/></svg>',
+      mikrofon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg>',
+      rumah: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
+      pengguna: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
+      tanya: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>',
+      centang: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',
+      silang: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>',
+      peringatan: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>',
+      lencana: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>'
+    };
+
+    const MATERI = [
+      {
+        id: 'm1',
+        judul: 'Apa itu sumber sejarah?',
+        ringkasan: 'Pengertian sumber sejarah, alasan kritik diperlukan, dan 5 langkah penelitian sejarah.',
+        bagian: [
+          {
+            subjudul: 'Pengertian dan Sifat Jejak Masa Lampau',
+            isi: 'Sumber sejarah adalah semua hal yang memberi keterangan tentang masa lampau (tulisan, benda, lisan, foto, bangunan). Sejarawan hanya punya jejak, dan jejak bisa palsu, keliru, atau memihak, sehingga harus diuji.'
+          },
+          {
+            subjudul: 'Langkah Penelitian Sejarah',
+            isi: 'Dalam penelitian sejarah, sejarawan menempuh lima langkah berurutan: pemilihan topik, heuristik (pengumpulan sumber), kritik (verifikasi keaslian dan kredibilitas), interpretasi (penafsiran fakta), dan historiografi (penulisan sejarah).'
+          }
+        ],
+        contoh: 'Surat pejabat 1890, foto upacara, cerita nenek tentang masa perang.'
+      },
+      {
+        id: 'm2',
+        judul: 'Jenis-jenis sumber',
+        ringkasan: 'Pembagian sumber berdasarkan urutan penyampaian (primer/sekunder) dan bentuknya.',
+        bagian: [
+          {
+            subjudul: 'Sumber Primer dan Sumber Sekunder',
+            isi: 'Primer: dibuat pelaku atau saksi pada masa peristiwa (surat, arsip, prasasti). Sekunder: dibuat setelahnya berdasarkan sumber lain (buku teks, artikel). Satu sumber bisa primer untuk satu topik dan sekunder untuk topik lain.'
+          },
+          {
+            subjudul: 'Bentuk Sumber Sejarah',
+            isi: 'Berdasarkan bentuknya, sumber terbagi menjadi sumber tertulis (dokumen, surat kabar, naskah), sumber lisan (wawancara pelaku atau cerita yang dituturkan), dan sumber benda (artefak, bangunan, koin, serta foto sebagai sumber visual).'
+          }
+        ],
+        contoh: 'Naskah teks Proklamasi adalah sumber primer tertulis, sedangkan buku teks sejarah SMA yang merangkum peristiwa tersebut adalah sumber sekunder tertulis.'
+      },
+      {
+        id: 'm3',
+        judul: 'Kritik ekstern',
+        ringkasan: 'Menguji keaslian fisik dan asal-usul sumber dari bagian luarnya.',
+        bagian: [
+          {
+            subjudul: 'Fokus Pengujian Kritik Ekstern',
+            isi: 'Kritik ekstern bertujuan menguji keaslian sumber dari bentuk luar: bahan, huruf, gaya bahasa, tanda tangan atau cap, tahun pembuatan, kondisi fisik, serta riwayat simpan (asal-usul penemuan).'
+          },
+          {
+            subjudul: 'Pertanyaan Kunci dan Hasil Kritik',
+            isi: 'Pertanyaan yang diajukan: Siapa pembuatnya? Kapan dibuat? Apakah bahannya sesuai zaman? Di mana ditemukan dan disimpan? Hasil kritik ekstern menentukan apakah sumber itu asli, salinan, atau palsu.'
+          }
+        ],
+        contoh: 'Surat bertarikh 1890 berkertas bercap pabrik 1952 tidak lulus kritik ekstern karena bahannya tidak sesuai dengan tahun yang tertulis.'
+      },
+      {
+        id: 'm4',
+        judul: 'Kritik intern',
+        ringkasan: 'Menguji kredibilitas atau tingkat kepercayaan isi informasi di dalam sumber.',
+        bagian: [
+          {
+            subjudul: 'Menilai Kredibilitas Isi Sumber',
+            isi: 'Kritik intern menguji kredibilitas isi: apakah penulis merupakan saksi langsung, bagaimana kedekatan waktu penulisan dengan peristiwa, adakah kepentingan atau keberpihakan, serta bagaimana kemampuan dan kejujuran penulis.'
+          },
+          {
+            subjudul: 'Korobasi dan Prinsip Kehati-hatian',
+            isi: 'Bandingkan isi sumber dengan sumber lain yang bebas (korobasi) untuk melihat kesesuaian fakta. Ingat prinsip penting: sumber yang asli secara fisik belum tentu benar isinya.'
+          }
+        ],
+        contoh: 'Memoar tokoh yang secara fisik asli ditulis sang tokoh, tetapi ditulis 40 tahun setelah kejadian dan menonjolkan peran pribadi, perlu diuji silang dengan arsip sezaman.'
+      }
+    ];
+
+    const GALERI = [
+      { id: 'g1', judul: 'Naskah teks Proklamasi', bentuk: 'Tertulis', tingkat: 'Primer', ikon: 'gulungan', keterangan: 'naskah pernyataan kemerdekaan 17 Agustus 1945', kasusTerkait: 'k2' },
+      { id: 'g2', judul: 'Foto pembacaan Proklamasi', bentuk: 'Benda', tingkat: 'Primer', ikon: 'kamera', keterangan: 'foto dokumentasi sezaman oleh Frans Mendur (sumber visual)', kasusTerkait: 'k4' },
+      { id: 'g3', judul: 'Prasasti Kedukan Bukit', bentuk: 'Benda', tingkat: 'Primer', ikon: 'candi', keterangan: 'beraksara Pallawa berbahasa Melayu Kuno, masa Sriwijaya, ditemukan di Palembang', kasusTerkait: 'k2' },
+      { id: 'g4', judul: 'Candi Borobudur', bentuk: 'Benda', tingkat: 'Primer', ikon: 'candi', keterangan: 'peninggalan sekitar abad ke-8 sampai ke-9, relief ajaran Buddha dan kehidupan masanya', kasusTerkait: 'k2' },
+      { id: 'g5', judul: 'Koin VOC', bentuk: 'Benda', tingkat: 'Primer', ikon: 'koin', keterangan: 'mata uang VOC, periksa bahan dan cap', kasusTerkait: 'k1' },
+      { id: 'g6', judul: 'Surat kabar Medan Prijaji', bentuk: 'Tertulis', tingkat: 'Primer', ikon: 'surat', keterangan: 'surat kabar masa pergerakan nasional, redaksi punya sudut pandang', kasusTerkait: 'k3' },
+      { id: 'g7', judul: 'Kesaksian lisan pelaku peristiwa', bentuk: 'Lisan', tingkat: 'Primer', ikon: 'mikrofon', keterangan: 'wawancara saksi (contoh ilustrasi), uji ingatan dan kepentingan', kasusTerkait: 'k3' },
+      { id: 'g8', judul: 'Cerita rakyat asal-usul tempat', bentuk: 'Lisan', tingkat: 'Sekunder', ikon: 'mikrofon', keterangan: 'diwariskan lewat banyak penutur sehingga isinya bisa berubah', kasusTerkait: 'k3' },
+      { id: 'g9', judul: 'Babad Tanah Jawi', bentuk: 'Tertulis', tingkat: 'Sekunder', ikon: 'gulungan', keterangan: 'ditulis jauh setelah peristiwa, bercampur mitos dan kepentingan penguasa', kasusTerkait: 'k3' },
+      { id: 'g10', judul: 'Buku teks sejarah SMA', bentuk: 'Tertulis', tingkat: 'Sekunder', ikon: 'buku', keterangan: 'merangkum hasil penelitian orang lain', kasusTerkait: 'k2' },
+      { id: 'g11', judul: 'Artikel jurnal sejarah', bentuk: 'Tertulis', tingkat: 'Sekunder', ikon: 'buku', keterangan: 'tafsiran sejarawan dengan rujukan', kasusTerkait: 'k2' }
+    ];
+
+    const KASUS = [
+      {
+        id: 'k1',
+        judul: 'Surat Asisten Residen 1890',
+        ikon: 'surat',
+        deskripsi: 'Surat bertarikh 1890, ditemukan di kolektor tanpa asal-usul; cap air kertas tahun pabrik 1952; menyebut harga beras yang baru berlaku 1950-an.',
+        ekstern: [
+          {
+            tanya: 'Bahan sesuai tahun 1890?',
+            benar: 'Tidak',
+            penjelasan: 'Cap air kertas menunjukkan produksi pabrik tahun 1952, bukan tahun 1890.'
+          },
+          {
+            tanya: 'Asal-usul jelas?',
+            benar: 'Tidak',
+            penjelasan: 'Surat ditemukan di kolektor tanpa catatan riwayat penyimpanan arsip yang jelas.'
+          }
+        ],
+        intern: [
+          {
+            tanya: 'Isi sejalan dengan keadaan 1890?',
+            benar: 'Tidak',
+            penjelasan: 'Harga beras yang disebut di dalam surat baru berlaku pada dekade 1950-an.'
+          },
+          {
+            tanya: 'Ada sumber lain yang menguatkan?',
+            benar: 'Tidak',
+            penjelasan: 'Tidak ada arsip resmi tahun 1890 yang mendukung keterangan harga dalam surat ini.'
+          }
+        ],
+        putusanAsli: 'Tidak asli',
+        putusanKredibel: 'Kurang kredibel',
+        pembahasan: 'Surat ini gagal pada kritik ekstern karena kertasnya baru dibuat tahun 1952 dan asal-usulnya tidak jelas, serta gagal pada kritik intern karena memuat data harga tahun 1950-an.'
+      },
+      {
+        id: 'k2',
+        judul: 'Catatan harian pelaut',
+        ikon: 'gulungan',
+        deskripsi: 'Ditulis sehari setelah badai, tersimpan di arsip nasional dengan riwayat lengkap, tulisan tangan cocok, cuaca cocok dengan laporan kapal lain.',
+        ekstern: [
+          {
+            tanya: 'Bahan dan tulisan sesuai zaman?',
+            benar: 'Ya',
+            penjelasan: 'Kertas dan tulisan tangan cocok dengan catatan pelaut pada masa tersebut.'
+          },
+          {
+            tanya: 'Asal-usul tercatat?',
+            benar: 'Ya',
+            penjelasan: 'Dokumen tersimpan di arsip nasional dengan riwayat penyimpanan yang lengkap.'
+          }
+        ],
+        intern: [
+          {
+            tanya: 'Penulis saksi langsung?',
+            benar: 'Ya',
+            penjelasan: 'Catatan ditulis sendiri oleh pelaut sehari setelah mengalami badai.'
+          },
+          {
+            tanya: 'Isi sejalan dengan sumber lain?',
+            benar: 'Ya',
+            penjelasan: 'Keterangan cuaca di dalamnya cocok dengan laporan kapal lain pada waktu yang sama.'
+          }
+        ],
+        putusanAsli: 'Asli',
+        putusanKredibel: 'Kredibel',
+        pembahasan: 'Catatan harian ini lulus kritik ekstern karena fisik dan riwayat arsipnya jelas, serta lulus kritik intern karena ditulis saksi langsung dan dikuatkan laporan kapal lain.'
+      },
+      {
+        id: 'k3',
+        judul: 'Memoar seorang tokoh',
+        ikon: 'buku',
+        deskripsi: 'Ditulis 40 tahun setelah peristiwa, diterbitkan penerbit resmi, naskah asli tersimpan, menonjolkan peran penulis, beberapa tanggal berbeda dari arsip.',
+        ekstern: [
+          {
+            tanya: 'Naskah benar dari tokoh tersebut?',
+            benar: 'Ya',
+            penjelasan: 'Naskah asli tersimpan dan diterbitkan secara resmi oleh sang tokoh.'
+          },
+          {
+            tanya: 'Bahan dan bentuk sesuai zaman?',
+            benar: 'Ya',
+            penjelasan: 'Fisik naskah sesuai dengan waktu penulisan memoar tersebut.'
+          }
+        ],
+        intern: [
+          {
+            tanya: 'Menulis dekat dengan waktu peristiwa?',
+            benar: 'Tidak',
+            penjelasan: 'Jarak 40 tahun membuat ingatan rentan keliru sehingga beberapa tanggal berbeda dari arsip.'
+          },
+          {
+            tanya: 'Bebas dari kepentingan pribadi?',
+            benar: 'Tidak',
+            penjelasan: 'Isi memoar cenderung menonjolkan peran pribadi penulis dalam peristiwa.'
+          }
+        ],
+        putusanAsli: 'Asli',
+        putusanKredibel: 'Kurang kredibel',
+        pembahasan: 'Memoar ini asli secara fisik karena benar ditulis tokoh tersebut, tetapi isinya kurang kredibel karena jarak waktu 40 tahun, bias menonjolkan diri, dan perbedaan tanggal dengan arsip.'
+      },
+      {
+        id: 'k4',
+        judul: 'Pesan berantai "foto langka 1945"',
+        ikon: 'kamera',
+        deskripsi: 'Foto berwarna jernih, tanpa nama pemotret dan arsip, adegan ternyata dari film modern, ajakan "sebarkan sebelum dihapus".',
+        ekstern: [
+          {
+            tanya: 'Ada sumber dan keterangan asli?',
+            benar: 'Tidak',
+            penjelasan: 'Pesan tidak mencantumkan nama pemotret maupun lembaga arsip penyimpannya.'
+          },
+          {
+            tanya: 'Ciri foto sesuai teknologi 1945?',
+            benar: 'Tidak',
+            penjelasan: 'Tampilan foto berwarna jernih dan adegannya berasal dari produksi film modern.'
+          }
+        ],
+        intern: [
+          {
+            tanya: 'Ada sumber lain yang menguatkan?',
+            benar: 'Tidak',
+            penjelasan: 'Dokumentasi sejarah 1945 tidak mencatat adegan rekaan film modern tersebut.'
+          },
+          {
+            tanya: 'Pembuat pesan bebas dari kepentingan menarik perhatian?',
+            benar: 'Tidak',
+            penjelasan: 'Kalimat ajakan "sebarkan sebelum dihapus" bertujuan memancing penyebaran viral.'
+          }
+        ],
+        putusanAsli: 'Tidak asli',
+        putusanKredibel: 'Kurang kredibel',
+        pembahasan: 'Pesan berantai ini bukan dokumentasi 1945 melainkan potongan film modern tanpa rujukan arsip dan memakai kalimat provokatif agar disebarkan.'
+      }
+    ];
+
+    const KUIS_KLASIFIKASI = GALERI.map(item => ({
+      id: item.id,
+      judul: item.judul,
+      bentuk: item.bentuk,
+      keterangan: item.keterangan,
+      benar: item.tingkat
+    }));
+
+    const KUIS_PG = [
+      {
+        tanya: 'Manakah yang merupakan ciri utama sumber sejarah primer?',
+        opsi: [
+          'Dibuat oleh pelaku atau saksi pada masa peristiwa terjadi',
+          'Ditulis sejarawan masa kini berdasarkan berbagai buku',
+          'Selalu berbentuk benda peninggalan kerajaan kuno',
+          'Isinya sudah pasti benar tanpa perlu diuji lagi'
+        ],
+        benar: 0,
+        penjelasan: 'Sumber primer dibuat langsung oleh pelaku atau saksi yang sezaman dengan peristiwa sejarah.'
+      },
+      {
+        tanya: 'Apa tujuan utama dilakukannya kritik ekstern terhadap sumber sejarah?',
+        opsi: [
+          'Menilai kejujuran dan sudut pandang penulis sumber',
+          'Menguji keaslian sumber dari bentuk luar dan asal-usulnya',
+          'Menyusun cerita sejarah agar menarik dibaca masyarakat',
+          'Membandingkan pendapat dua sejarawan masa kini'
+        ],
+        benar: 1,
+        penjelasan: 'Kritik ekstern memeriksa aspek luar seperti bahan, huruf, cap, tahun, dan riwayat simpan untuk menguji keaslian.'
+      },
+      {
+        tanya: 'Apa fokus pengujian pada tahap kritik intern?',
+        opsi: [
+          'Jenis tinta dan umur kertas dokumen',
+          'Lokasi penemuan artefak di lapangan',
+          'Kredibilitas atau tingkat kepercayaan isi informasi sumber',
+          'Jumlah halaman dan ukuran fisik naskah'
+        ],
+        benar: 2,
+        penjelasan: 'Kritik intern menguji kesaksian, kedekatan waktu, kepentingan penulis, dan kesesuaian isi sumber.'
+      },
+      {
+        tanya: 'Ditemukan surat bertarikh 1890, tetapi kertasnya memiliki cap pabrik tahun 1952. Kesimpulan yang tepat adalah...',
+        opsi: [
+          'Surat lulus kritik intern karena bahasanya sopan',
+          'Surat tersebut asli karena bertahun 1890',
+          'Surat tidak lulus kritik ekstern karena bahannya tidak sesuai zaman',
+          'Surat menjadi sumber sekunder yang sah'
+        ],
+        benar: 2,
+        penjelasan: 'Kertas produksi 1952 tidak mungkin dipakai pada tahun 1890, sehingga tidak lulus kritik ekstern.'
+      },
+      {
+        tanya: 'Dalam langkah penelitian sejarah, kegiatan yang dilakukan tepat setelah pemilihan topik adalah...',
+        opsi: [
+          'Historiografi',
+          'Interpretasi',
+          'Kritik sumber',
+          'Heuristik'
+        ],
+        benar: 3,
+        penjelasan: 'Urutan penelitian sejarah adalah pemilihan topik, heuristik, kritik, interpretasi, dan historiografi.'
+      },
+      {
+        tanya: 'Buku teks sejarah SMA diklasifikasikan sebagai sumber...',
+        opsi: [
+          'Primer tertulis',
+          'Sekunder tertulis',
+          'Primer benda',
+          'Sekunder lisan'
+        ],
+        benar: 1,
+        penjelasan: 'Buku teks sejarah berbentuk tulisan dan disusun berdasarkan penelitian atau sumber lain, sehingga termasuk sekunder tertulis.'
+      },
+      {
+        tanya: 'Mengapa memoar yang ditulis seorang tokoh 40 tahun setelah peristiwa perlu dibandingkan dengan sumber lain?',
+        opsi: [
+          'Karena memoar selalu ditulis oleh orang lain',
+          'Karena kertas memoar mudah rusak dalam 40 tahun',
+          'Karena ingatan bisa keliru dan penulis berpotensi menonjolkan perannya',
+          'Karena memoar tidak termasuk sumber tertulis'
+        ],
+        benar: 2,
+        penjelasan: 'Jarak waktu yang jauh memengaruhi ketepatan ingatan dan penulis bisa memiliki kepentingan pribadi.'
+      },
+      {
+        tanya: 'Prasasti Kedukan Bukit berdasarkan tingkat dan bentuknya termasuk sumber...',
+        opsi: [
+          'Primer benda',
+          'Sekunder benda',
+          'Primer lisan',
+          'Sekunder tertulis'
+        ],
+        benar: 0,
+        penjelasan: 'Prasasti merupakan peninggalan fisik dari masa peristiwa sehingga termasuk sumber primer benda.'
+      },
+      {
+        tanya: 'Tindakan membandingkan isi suatu sumber dengan sumber lain yang bebas untuk menguji kebenaran informasi disebut...',
+        opsi: [
+          'Heuristik',
+          'Korobasi',
+          'Historiografi',
+          'Periodisasi'
+        ],
+        benar: 1,
+        penjelasan: 'Korobasi adalah pembandingan antar-sumber yang independen untuk memastikan kredibilitas fakta.'
+      },
+      {
+        tanya: 'Hal terpenting yang harus diuji saat menggunakan sumber sejarah lisan berupa wawancara pelaku peristiwa adalah...',
+        opsi: [
+          'Merk alat perekam yang dipakai peneliti',
+          'Ingatan dan kepentingan narasumber',
+          'Panjang durasi rekaman wawancara',
+          'Banyaknya pendengar saat wawancara berlangsung'
+        ],
+        benar: 1,
+        penjelasan: 'Pada kesaksian lisan, daya ingat serta ada tidaknya kepentingan narasumber sangat menentukan kredibilitas keterangan.'
+      }
+    ];
+
+    const KUIS_HOAKS = [
+      { pernyataan: 'Dokumen asli pasti benar', benar: 'Hoaks', penjelasan: 'Asli secara fisik belum tentu benar isinya; penulis dokumen asli bisa keliru atau memihak.' },
+      { pernyataan: 'Foto tanpa sumber perlu diverifikasi', benar: 'Fakta', penjelasan: 'Foto tanpa keterangan pemotret dan arsip harus diperiksa keaslian serta konteks waktunya.' },
+      { pernyataan: 'Sumber sekunder tidak berguna', benar: 'Hoaks', penjelasan: 'Sumber sekunder seperti buku teks dan artikel jurnal membantu memberi konteks dan rangkuman penelitian.' },
+      { pernyataan: 'Membandingkan sumber membantu menilai kredibilitas', benar: 'Fakta', penjelasan: 'Korobasi atau membandingkan berbagai sumber bebas menguatkan keandalan fakta sejarah.' },
+      { pernyataan: 'Kesaksian lisan pasti salah', benar: 'Hoaks', penjelasan: 'Kesaksian lisan pelaku peristiwa adalah sumber primer yang berharga asalkan diuji ingatan dan kepentingannya.' },
+      { pernyataan: 'Satu sumber bisa primer dan sekunder tergantung topik', benar: 'Fakta', penjelasan: 'Status primer atau sekunder bergantung pada keterkaitan waktu pembuatannya dengan topik yang diteliti.' },
+      { pernyataan: 'Pesan viral pasti benar', benar: 'Hoaks', penjelasan: 'Pesan berantai yang viral sering kali tidak memiliki rujukan arsip dan memuat informasi keliru.' },
+      { pernyataan: 'Kritik ekstern tak perlu memeriksa bahan dan tahun', benar: 'Hoaks', penjelasan: 'Memeriksa kesesuaian bahan dan tahun justru inti utama pengujian keaslian pada kritik ekstern.' }
+    ];
+
+    const LENCANA = [
+      { id: 'b1', nama: 'Penelusur Pemula', syarat: 'Menyelesaikan 1 materi', ikon: 'buku' },
+      { id: 'b2', nama: 'Pembaca Tuntas', syarat: 'Menyelesaikan semua 4 materi', ikon: 'gulungan' },
+      { id: 'b3', nama: 'Penguji Sumber', syarat: 'Menyelesaikan 1 kasus Uji Sumber', ikon: 'kacaPembesar' },
+      { id: 'b4', nama: 'Detektif Sumber', syarat: 'Menyelesaikan semua 4 kasus Uji Sumber', ikon: 'perisai' },
+      { id: 'b5', nama: 'Pemburu Hoaks', syarat: 'Skor minimal 80% pada Hoaks atau Fakta', ikon: 'peringatan' },
+      { id: 'b6', nama: 'Sejarawan Muda', syarat: 'Meraih semua 5 lencana lainnya', ikon: 'lencana' }
+    ];
+
+    /* ==========================================================================
+       BAGIAN 2: PENYIMPANAN (LOCALSTORAGE DENGAN CADANGAN STATE) & STATE APLIKASI
+       ========================================================================== */
+
+    const STORAGE_KEY = 'sumberku_sma_x_v1';
+
+    function buatProgresAwal() {
+      return {
+        nama: 'Pelajar Sejarah',
+        materiSelesai: [],
+        skorKasus: {},
+        skorKuis: {
+          klasifikasi: 0,
+          pg: 0,
+          hoaks: 0
+        }
+      };
+    }
+
+    function muatProgres() {
+      const bawaan = buatProgresAwal();
+      try {
+        const mentah = window.localStorage.getItem(STORAGE_KEY);
+        if (!mentah) return bawaan;
+        const data = JSON.parse(mentah);
+        return {
+          nama: typeof data.nama === 'string' && data.nama.trim() ? data.nama.slice(0, 40) : bawaan.nama,
+          materiSelesai: Array.isArray(data.materiSelesai) ? data.materiSelesai : [],
+          skorKasus: data.skorKasus && typeof data.skorKasus === 'object' ? data.skorKasus : {},
+          skorKuis: {
+            klasifikasi: Number(data.skorKuis && data.skorKuis.klasifikasi) || 0,
+            pg: Number(data.skorKuis && data.skorKuis.pg) || 0,
+            hoaks: Number(data.skorKuis && data.skorKuis.hoaks) || 0
+          }
+        };
+      } catch (err) {
+        return bawaan;
+      }
+    }
+
+    function simpanProgres(progresObj) {
+      try {
+        window.localStorage.setItem(STORAGE_KEY, JSON.stringify(progresObj));
+      } catch (err) {
+        // Jika localStorage tidak tersedia, aplikasi tetap berjalan memakai memori state
+      }
+    }
+
+    const state = {
+      halaman: 'beranda',
+      materiAktifId: 'm1',
+      filterGaleri: 'Semua',
+      galeriAktifId: 'g1',
+      kasusAktifId: 'k1',
+      tahapUji: 1,
+      jawabanUji: {
+        ekstern: [null, null],
+        intern: [null, null],
+        putusanAsli: null,
+        putusanKredibel: null
+      },
+      kuisMode: null,
+      kuisIndex: 0,
+      kuisBenar: 0,
+      kuisTerjawab: null,
+      deferredPrompt: null,
+      isInstalled: false,
+      pwaReady: false,
+      progres: muatProgres()
+    };
+
+    /* ==========================================================================
+       BAGIAN 3: PERHITUNGAN POIN, PROGRES, DAN LENCANA
+       ========================================================================== */
+
+    function hitungStatistik() {
+      const p = state.progres;
+      const jumlahMateri = p.materiSelesai.length;
+      const totalUji = Object.values(p.skorKasus).reduce((acc, val) => acc + (Number(val) || 0), 0);
+      const totalSoalKuisBenar = (p.skorKuis.klasifikasi || 0) + (p.skorKuis.pg || 0) + (p.skorKuis.hoaks || 0);
+      const totalPoin = (jumlahMateri * 10) + totalUji + (totalSoalKuisBenar * 10);
+
+      const kasusSelesaiCount = Object.keys(p.skorKasus).length;
+      const persenHoaks = Math.round(((p.skorKuis.hoaks || 0) / KUIS_HOAKS.length) * 100);
+
+      const lencanaTerbuka = {
+        b1: jumlahMateri >= 1,
+        b2: jumlahMateri >= MATERI.length,
+        b3: kasusSelesaiCount >= 1,
+        b4: kasusSelesaiCount >= KASUS.length,
+        b5: persenHoaks >= 80
+      };
+      lencanaTerbuka.b6 = lencanaTerbuka.b1 && lencanaTerbuka.b2 && lencanaTerbuka.b3 && lencanaTerbuka.b4 && lencanaTerbuka.b5;
+
+      const kuisSelesaiCount =
+        (p.skorKuis.klasifikasi > 0 ? 1 : 0) +
+        (p.skorKuis.pg > 0 ? 1 : 0) +
+        (p.skorKuis.hoaks > 0 ? 1 : 0);
+      const persenProgres = Math.round(((jumlahMateri + kasusSelesaiCount + kuisSelesaiCount) / 11) * 100);
+
+      return {
+        jumlahMateri,
+        totalUji,
+        totalSoalKuisBenar,
+        totalPoin,
+        kasusSelesaiCount,
+        persenHoaks,
+        persenProgres,
+        lencanaTerbuka
+      };
+    }
+
+    function umumkan(teks) {
+      const el = document.getElementById('live-announcer');
+      if (!el) return;
+      el.textContent = '';
+      window.setTimeout(() => {
+        el.textContent = teks;
+      }, 30);
+    }
+
+    function escapeHTML(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function pindahHalaman(halamanBaru) {
+      state.halaman = halamanBaru;
+      render();
+      window.scrollTo(0, 0);
+      const judul = document.getElementById('page-title');
+      if (judul) {
+        judul.focus();
+      }
+    }
+
+    /* ==========================================================================
+       BAGIAN 4: RENDER SETIAP HALAMAN
+       ========================================================================== */
+
+    function renderBeranda(stats) {
+      const namaAman = escapeHTML(state.progres.nama);
+      const installBannerHTML = (!state.isInstalled) ? `
+        <section class="card-tint stack-sm" aria-label="Instalasi aplikasi luring">
+          <div class="row-between">
+            <div>
+              <strong>Pasang Aplikasi (PWA)</strong>
+              <p class="text-muted" style="font-size:0.82rem;">Akses SumberKu lebih cepat dan tetap berjalan tanpa internet.</p>
+            </div>
+            <button type="button" class="btn btn-primary" data-action="install-pwa" style="flex-shrink:0;">
+              Install
+            </button>
+          </div>
+        </section>
+      ` : '';
+
+      return `
+        <h1 id="page-title" tabindex="-1">Beranda Belajar</h1>
+
+        <section class="card stack-md" aria-label="Sapaan dan progres">
+          <p>Halo, <strong>${namaAman}</strong>! Siap menguji sumber sejarah hari ini?</p>
+          <div>
+            <label for="input-nama" class="text-muted">Ubah nama panggilanmu:</label>
+            <input id="input-nama" class="input-field" type="text" maxlength="40" value="${namaAman}" placeholder="Masukkan namamu">
+          </div>
+          <div>
+            <div class="row-between">
+              <span class="text-muted">Progres Belajar Keseluruhan</span>
+              <strong>${stats.persenProgres}%</strong>
+            </div>
+            <div class="progress-track" role="progressbar" aria-valuenow="${stats.persenProgres}" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-fill" style="width: ${stats.persenProgres}%"></div>
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary btn-block" data-action="lanjutkan">
+            ${ICONS.centang}
+            <span>Lanjutkan belajar</span>
+          </button>
+        </section>
+
+        ${installBannerHTML}
+
+        <section aria-label="Menu utama pembelajaran">
+          <h2>Menu Utama</h2>
+          <div class="menu-grid">
+            <button type="button" class="menu-tile" data-action="goto" data-target="pelajari">
+              <span class="tile-icon" aria-hidden="true">${ICONS.buku}</span>
+              <div>
+                <span class="tile-title">Pelajari</span>
+                <span class="tile-desc">${stats.jumlahMateri}/${MATERI.length} materi selesai</span>
+              </div>
+            </button>
+
+            <button type="button" class="menu-tile" data-action="goto" data-target="galeri">
+              <span class="tile-icon" aria-hidden="true">${ICONS.gulungan}</span>
+              <div>
+                <span class="tile-title">Galeri Sumber</span>
+                <span class="tile-desc">${GALERI.length} contoh sumber</span>
+              </div>
+            </button>
+
+            <button type="button" class="menu-tile" data-action="goto" data-target="uji">
+              <span class="tile-icon" aria-hidden="true">${ICONS.kacaPembesar}</span>
+              <div>
+                <span class="tile-title">Uji Sumber</span>
+                <span class="tile-desc">${stats.kasusSelesaiCount}/${KASUS.length} kasus diuji</span>
+              </div>
+            </button>
+
+            <button type="button" class="menu-tile" data-action="goto" data-target="kuis">
+              <span class="tile-icon" aria-hidden="true">${ICONS.perisai}</span>
+              <div>
+                <span class="tile-title">Latihan &amp; Kuis</span>
+                <span class="tile-desc">3 mode latihan</span>
+              </div>
+            </button>
+          </div>
+        </section>
+      `;
+    }
+
+    function renderPelajari() {
+      const daftarHTML = MATERI.map((m, idx) => {
+        const selesai = state.progres.materiSelesai.includes(m.id);
+        return `
+          <article class="card stack-sm">
+            <div class="row-between">
+              <span class="badge">Materi ${idx + 1}</span>
+              ${selesai ? `<span class="badge badge-done">${ICONS.centang} Selesai</span>` : '<span class="badge">Belum selesai</span>'}
+            </div>
+            <h3>${escapeHTML(m.judul)}</h3>
+            <p class="text-muted">${escapeHTML(m.ringkasan)}</p>
+            <button type="button" class="btn btn-secondary btn-block" data-action="buka-materi" data-id="${m.id}">
+              Baca Materi
+            </button>
+          </article>
+        `;
+      }).join('');
+
+      return `
+        <div class="row-between">
+          <h1 id="page-title" tabindex="-1">Pelajari Materi</h1>
+          <button type="button" class="btn btn-secondary" data-action="goto" data-target="beranda">Kembali</button>
+        </div>
+        <p class="text-muted">Pelajari konsep dasar penelitian sejarah, klasifikasi sumber, serta kritik ekstern dan intern.</p>
+        <div class="stack-md">${daftarHTML}</div>
+      `;
+    }
+
+    function renderMateriDetail() {
+      const idx = MATERI.findIndex(m => m.id === state.materiAktifId);
+      const materi = MATERI[idx >= 0 ? idx : 0];
+      const selesai = state.progres.materiSelesai.includes(materi.id);
+      const prevId = idx > 0 ? MATERI[idx - 1].id : null;
+      const nextId = idx < MATERI.length - 1 ? MATERI[idx + 1].id : null;
+
+      const bagianHTML = materi.bagian.map(b => `
+        <div class="card stack-sm">
+          <h3>${escapeHTML(b.subjudul)}</h3>
+          <p>${escapeHTML(b.isi)}</p>
+        </div>
+      `).join('');
+
+      return `
+        <div class="row-between">
+          <span class="badge">Materi ${idx + 1} dari ${MATERI.length}</span>
+          <button type="button" class="btn btn-secondary" data-action="goto" data-target="pelajari">Daftar Materi</button>
+        </div>
+        <h1 id="page-title" tabindex="-1">${escapeHTML(materi.judul)}</h1>
+
+        ${bagianHTML}
+
+        <div class="card-tint stack-sm" role="region" aria-label="Contoh penerapan">
+          <h3>Contoh</h3>
+          <p>${escapeHTML(materi.contoh)}</p>
+        </div>
+
+        <button type="button" class="btn ${selesai ? 'btn-moss' : 'btn-primary'} btn-block" data-action="tandai-materi" data-id="${materi.id}">
+          ${ICONS.centang}
+          <span>${selesai ? 'Materi Sudah Selesai' : 'Tandai selesai'}</span>
+        </button>
+
+        <div class="choice-row-2">
+          <button type="button" class="btn btn-secondary" ${prevId ? `data-action="buka-materi" data-id="${prevId}"` : 'disabled'}>
+            Sebelumnya
+          </button>
+          <button type="button" class="btn btn-secondary" ${nextId ? `data-action="buka-materi" data-id="${nextId}"` : 'disabled'}>
+            Berikutnya
+          </button>
+        </div>
+      `;
+    }
+
+    function renderGaleri() {
+      const daftarFilter = ['Semua', 'Primer', 'Sekunder', 'Lisan', 'Tertulis', 'Benda'];
+      const filterHTML = daftarFilter.map(f => `
+        <button type="button" class="filter-chip" aria-pressed="${state.filterGaleri === f}" data-action="set-filter" data-filter="${f}">
+          ${f}
+        </button>
+      `).join('');
+
+      const tersaring = GALERI.filter(item => {
+        if (state.filterGaleri === 'Semua') return true;
+        return item.tingkat === state.filterGaleri || item.bentuk === state.filterGaleri;
+      });
+
+      const kartuHTML = tersaring.map(item => `
+        <button type="button" class="gallery-card" data-action="buka-galeri" data-id="${item.id}">
+          <div class="tile-icon" aria-hidden="true">${ICONS[item.ikon] || ICONS.gulungan}</div>
+          <div>
+            <strong style="display:block; font-family:var(--font-serif); margin-bottom:6px;">${escapeHTML(item.judul)}</strong>
+            <div style="display:flex; flex-wrap:wrap; gap:4px;">
+              <span class="badge ${item.tingkat === 'Primer' ? 'badge-primer' : 'badge-sekunder'}">${item.tingkat}</span>
+              <span class="badge">${item.bentuk}</span>
+            </div>
+          </div>
+        </button>
+      `).join('');
+
+      return `
+        <div class="row-between">
+          <h1 id="page-title" tabindex="-1">Galeri Sumber</h1>
+          <button type="button" class="btn btn-secondary" data-action="goto" data-target="beranda">Kembali</button>
+        </div>
+        <div class="filter-bar" role="group" aria-label="Filter sumber sejarah">
+          ${filterHTML}
+        </div>
+        <p class="text-muted">Menampilkan ${tersaring.length} sumber sejarah. Ketuk kartu untuk melihat rincian.</p>
+        <div class="gallery-grid">${kartuHTML}</div>
+      `;
+    }
+
+    function renderGaleriDetail() {
+      const item = GALERI.find(g => g.id === state.galeriAktifId) || GALERI[0];
+      return `
+        <div class="row-between">
+          <span class="badge">Rincian Sumber</span>
+          <button type="button" class="btn btn-secondary" data-action="goto" data-target="galeri">Kembali ke Galeri</button>
+        </div>
+        <h1 id="page-title" tabindex="-1">${escapeHTML(item.judul)}</h1>
+
+        <div class="card stack-md">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="tile-icon" aria-hidden="true">${ICONS[item.ikon] || ICONS.gulungan}</div>
+            <div style="display:flex; gap:6px; flex-wrap:wrap;">
+              <span class="badge ${item.tingkat === 'Primer' ? 'badge-primer' : 'badge-sekunder'}">${item.tingkat}</span>
+              <span class="badge">Bentuk: ${item.bentuk}</span>
+            </div>
+          </div>
+          <div>
+            <h3>Keterangan Sumber</h3>
+            <p>${escapeHTML(item.keterangan)}.</p>
+          </div>
+          <div class="card-tint">
+            <p class="text-muted">Ingin melatih keterampilan kritik ekstern dan intern pada kasus nyata? Coba uji sumber terkait di bawah ini.</p>
+          </div>
+          <button type="button" class="btn btn-primary btn-block" data-action="mulai-kasus" data-id="${item.kasusTerkait}">
+            ${ICONS.kacaPembesar}
+            <span>Uji sumber ini</span>
+          </button>
+        </div>
+      `;
+    }
+
+    function renderUjiDaftar() {
+      const kartuKasus = KASUS.map((k, i) => {
+        const skor = state.progres.skorKasus[k.id];
+        const sudah = typeof skor === 'number';
+        return `
+          <article class="card stack-sm">
+            <div class="row-between">
+              <span class="badge">Kasus ${i + 1}</span>
+              <span class="badge ${sudah ? 'badge-done' : ''}">
+                ${sudah ? `Skor Terbaik: ${skor}/60` : 'Belum diuji'}
+              </span>
+            </div>
+            <h3>${escapeHTML(k.judul)}</h3>
+            <p class="text-muted">${escapeHTML(k.deskripsi)}</p>
+            <button type="button" class="btn btn-primary btn-block" data-action="mulai-kasus" data-id="${k.id}">
+              ${ICONS.kacaPembesar}
+              <span>${sudah ? 'Uji Ulang Kasus' : 'Mulai Uji Sumber'}</span>
+            </button>
+          </article>
+        `;
+      }).join('');
+
+      return `
+        <div class="row-between">
+          <h1 id="page-title" tabindex="-1">Uji Sumber Sejarah</h1>
+          <button type="button" class="btn btn-secondary" data-action="goto" data-target="beranda">Kembali</button>
+        </div>
+        <p class="text-muted">Pilih studi kasus di bawah ini, lalu lakukan kritik ekstern, kritik intern, dan ambil putusan akhir.</p>
+        <div class="stack-md">${kartuKasus}</div>
+      `;
+    }
+
+    function renderUjiKasus() {
+      const kasus = KASUS.find(k => k.id === state.kasusAktifId) || KASUS[0];
+      const t = state.tahapUji;
+
+      const stepperHTML = `
+        <div class="stepper" aria-label="Tahapan uji sumber">
+          <div class="step-item ${t === 1 ? 'active' : (t > 1 ? 'completed' : '')}">1. Ekstern</div>
+          <div class="step-item ${t === 2 ? 'active' : (t > 2 ? 'completed' : '')}">2. Intern</div>
+          <div class="step-item ${t >= 3 ? 'active' : ''}">3. Putusan</div>
+        </div>
+      `;
+
+      let kontenTahap = '';
+
+      if (t === 1 || t === 2) {
+        const jenis = t === 1 ? 'ekstern' : 'intern';
+        const daftarSoal = kasus[jenis];
+        const judulTahap = t === 1 ? 'Tahap 1: Kritik Ekstern (Keaslian Fisik)' : 'Tahap 2: Kritik Intern (Kredibilitas Isi)';
+
+        const soalHTML = daftarSoal.map((q, qIdx) => {
+          const jawabanUser = state.jawabanUji[jenis][qIdx];
+          const terkunci = jawabanUser !== null;
+          const tepat = jawabanUser === q.benar;
+
+          const opsiButtons = ['Ya', 'Tidak', 'Ragu'].map(opsi => {
+            let cls = 'choice-btn';
+            if (terkunci) {
+              if (opsi === q.benar) cls += ' correct-ans';
+              else if (opsi === jawabanUser) cls += ' wrong-ans';
+            }
+            return `
+              <button type="button" class="${cls}" ${terkunci ? 'disabled' : `data-action="jawab-uji" data-jenis="${jenis}" data-qidx="${qIdx}" data-val="${opsi}"`}>
+                ${opsi}
+              </button>
+            `;
+          }).join('');
+
+          const umpanHTML = terkunci ? `
+            <div class="feedback-box ${tepat ? 'ok' : 'bad'}">
+              <div class="feedback-head">
+                ${tepat ? ICONS.centang : ICONS.silang}
+                <span>${tepat ? 'Tepat' : `Kurang tepat (Jawaban: ${q.benar})`}</span>
+              </div>
+              <p>${escapeHTML(q.penjelasan)}</p>
+            </div>
+          ` : '';
+
+          return `
+            <div class="card stack-sm">
+              <strong>Pertanyaan ${qIdx + 1}: ${escapeHTML(q.tanya)}</strong>
+              <div class="choice-row">${opsiButtons}</div>
+              ${umpanHTML}
+            </div>
+          `;
+        }).join('');
+
+        const semuaTerjawab = state.jawabanUji[jenis][0] !== null && state.jawabanUji[jenis][1] !== null;
+
+        kontenTahap = `
+          <h2>${judulTahap}</h2>
+          ${soalHTML}
+          <button type="button" class="btn btn-primary btn-block" ${semuaTerjawab ? `data-action="lanjut-tahap-uji"` : 'disabled'}>
+            ${t === 1 ? 'Lanjut ke Kritik Intern' : 'Lanjut ke Putusan Akhir'}
+          </button>
+        `;
+      } else if (t === 3) {
+        const pAsli = state.jawabanUji.putusanAsli;
+        const pKred = state.jawabanUji.putusanKredibel;
+        const siapKirim = pAsli !== null && pKred !== null;
+
+        kontenTahap = `
+          <h2>Tahap 3: Putusan Akhir</h2>
+          <div class="card stack-sm">
+            <strong>1. Hasil Kritik Ekstern (Keaslian):</strong>
+            <div class="choice-row-2">
+              ${['Asli', 'Tidak asli'].map(opt => `
+                <button type="button" class="choice-btn ${pAsli === opt ? 'selected' : ''}" data-action="pilih-putusan" data-field="putusanAsli" data-val="${opt}">
+                  ${opt}
+                </button>
+              `).join('')}
+            </div>
+          </div>
+
+          <div class="card stack-sm">
+            <strong>2. Hasil Kritik Intern (Kredibilitas):</strong>
+            <div class="choice-row-2">
+              ${['Kredibel', 'Kurang kredibel'].map(opt => `
+                <button type="button" class="choice-btn ${pKred === opt ? 'selected' : ''}" data-action="pilih-putusan" data-field="putusanKredibel" data-val="${opt}">
+                  ${opt}
+                </button>
+              `).join('')}
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-primary btn-block" ${siapKirim ? 'data-action="selesai-uji"' : 'disabled'}>
+            Terbitkan Stempel Hasil
+          </button>
+        `;
+      } else {
+        let benarCount = 0;
+        if (state.jawabanUji.ekstern[0] === kasus.ekstern[0].benar) benarCount++;
+        if (state.jawabanUji.ekstern[1] === kasus.ekstern[1].benar) benarCount++;
+        if (state.jawabanUji.intern[0] === kasus.intern[0].benar) benarCount++;
+        if (state.jawabanUji.intern[1] === kasus.intern[1].benar) benarCount++;
+        if (state.jawabanUji.putusanAsli === kasus.putusanAsli) benarCount++;
+        if (state.jawabanUji.putusanKredibel === kasus.putusanKredibel) benarCount++;
+        const skorAkhir = benarCount * 10;
+
+        const tepatAsli = state.jawabanUji.putusanAsli === kasus.putusanAsli;
+        const tepatKred = state.jawabanUji.putusanKredibel === kasus.putusanKredibel;
+
+        kontenTahap = `
+          <div class="card stack-md">
+            <div class="row-between">
+              <h2>Hasil Uji Sumber</h2>
+              <span class="badge badge-done">Skor: ${skorAkhir} / 60</span>
+            </div>
+
+            <div class="stamp-board" aria-label="Stempel putusan sumber sejarah">
+              <span class="stamp ${kasus.putusanAsli === 'Asli' ? 'stamp-valid' : 'stamp-invalid'}">
+                ${kasus.putusanAsli}
+              </span>
+              <span class="stamp ${kasus.putusanKredibel === 'Kredibel' ? 'stamp-valid' : 'stamp-invalid'}">
+                ${kasus.putusanKredibel}
+              </span>
+            </div>
+
+            <div class="stack-sm">
+              <div class="feedback-box ${tepatAsli ? 'ok' : 'bad'}">
+                <div class="feedback-head">
+                  ${tepatAsli ? ICONS.centang : ICONS.silang}
+                  <span>Putusan Ekstern: ${tepatAsli ? 'Tepat' : 'Kurang tepat'}</span>
+                </div>
+                <p>Jawabanmu: <strong>${state.jawabanUji.putusanAsli}</strong> | Putusan tepat: <strong>${kasus.putusanAsli}</strong></p>
+              </div>
+
+              <div class="feedback-box ${tepatKred ? 'ok' : 'bad'}">
+                <div class="feedback-head">
+                  ${tepatKred ? ICONS.centang : ICONS.silang}
+                  <span>Putusan Intern: ${tepatKred ? 'Tepat' : 'Kurang tepat'}</span>
+                </div>
+                <p>Jawabanmu: <strong>${state.jawabanUji.putusanKredibel}</strong> | Putusan tepat: <strong>${kasus.putusanKredibel}</strong></p>
+              </div>
+            </div>
+
+            <div class="card-tint stack-sm">
+              <h3>Pembahasan Kasus</h3>
+              <p>${escapeHTML(kasus.pembahasan)}</p>
+            </div>
+
+            <div class="choice-row-2">
+              <button type="button" class="btn btn-secondary" data-action="mulai-kasus" data-id="${kasus.id}">Ulangi</button>
+              <button type="button" class="btn btn-primary" data-action="goto" data-target="uji">Kembali</button>
+            </div>
+          </div>
+        `;
+      }
+
+      return `
+        <div class="row-between">
+          <h1 id="page-title" tabindex="-1">${escapeHTML(kasus.judul)}</h1>
+          <button type="button" class="btn btn-secondary" data-action="goto" data-target="uji">Batal</button>
+        </div>
+        <div class="card-tint">
+          <p>${escapeHTML(kasus.deskripsi)}</p>
+        </div>
+        ${stepperHTML}
+        ${kontenTahap}
+      `;
+    }
+
+    function renderKuisMenu() {
+      const sk = state.progres.skorKuis;
+      return `
+        <div class="row-between">
+          <h1 id="page-title" tabindex="-1">Latihan dan Kuis</h1>
+          <button type="button" class="btn btn-secondary" data-action="goto" data-target="beranda">Kembali</button>
+        </div>
+        <p class="text-muted">Pilih salah satu mode latihan untuk menguji pemahamanmu tentang sumber sejarah.</p>
+
+        <div class="stack-md">
+          <article class="card stack-sm">
+            <div class="row-between">
+              <h3>1. Klasifikasi Primer / Sekunder</h3>
+              <span class="badge">Terbaik: ${sk.klasifikasi}/${KUIS_KLASIFIKASI.length}</span>
+            </div>
+            <p class="text-muted">Kelompokkan 11 sumber dari galeri ke dalam tingkat sumber primer atau sekunder.</p>
+            <button type="button" class="btn btn-primary btn-block" data-action="mulai-kuis" data-mode="klasifikasi">Mulai Klasifikasi</button>
+          </article>
+
+          <article class="card stack-sm">
+            <div class="row-between">
+              <h3>2. Pilihan Ganda</h3>
+              <span class="badge">Terbaik: ${sk.pg}/${KUIS_PG.length}</span>
+            </div>
+            <p class="text-muted">10 soal konsep penelitian sejarah, kritik ekstern, kritik intern, dan korobasi.</p>
+            <button type="button" class="btn btn-primary btn-block" data-action="mulai-kuis" data-mode="pg">Mulai Pilihan Ganda</button>
+          </article>
+
+          <article class="card stack-sm">
+            <div class="row-between">
+              <h3>3. Hoaks atau Fakta</h3>
+              <span class="badge">Terbaik: ${sk.hoaks}/${KUIS_HOAKS.length}</span>
+            </div>
+            <p class="text-muted">Uji kepekaanmu mengenali pernyataan keliru dan fakta seputar kritik sumber sejarah.</p>
+            <button type="button" class="btn btn-primary btn-block" data-action="mulai-kuis" data-mode="hoaks">Mulai Hoaks atau Fakta</button>
+          </article>
+        </div>
+      `;
+    }
+
+    function renderKuisMain() {
+      const mode = state.kuisMode;
+      const bank = mode === 'klasifikasi' ? KUIS_KLASIFIKASI : (mode === 'pg' ? KUIS_PG : KUIS_HOAKS);
+      const total = bank.length;
+      const idx = state.kuisIndex;
+      const judulMode = mode === 'klasifikasi' ? 'Klasifikasi Sumber' : (mode === 'pg' ? 'Pilihan Ganda' : 'Hoaks atau Fakta');
+
+      if (idx >= total) {
+        const persen = Math.round((state.kuisBenar / total) * 100);
+        return `
+          <h1 id="page-title" tabindex="-1">Hasil ${judulMode}</h1>
+          <div class="card stack-md">
+            <div class="row-between">
+              <strong>Skor Akhir</strong>
+              <span class="badge badge-done">${state.kuisBenar} dari ${total} Benar (${persen}%)</span>
+            </div>
+            <p>Kamu memperoleh tambahan poin dari skor terbaik pada mode ini. Terus berlatih untuk menguasai kritik sumber sejarah!</p>
+            <div class="choice-row-2">
+              <button type="button" class="btn btn-secondary" data-action="mulai-kuis" data-mode="${mode}">Ulangi</button>
+              <button type="button" class="btn btn-primary" data-action="goto" data-target="kuis">Pilih Mode Lain</button>
+            </div>
+          </div>
+        `;
+      }
+
+      const soal = bank[idx];
+      const persenJalan = Math.round(((idx) / total) * 100);
+      const sudahJawab = state.kuisTerjawab !== null;
+
+      let tubuhSoal = '';
+      let opsiHTML = '';
+      let isBenar = false;
+      let teksPenjelasan = '';
+
+      if (mode === 'klasifikasi') {
+        isBenar = state.kuisTerjawab === soal.benar;
+        teksPenjelasan = `${soal.judul} (${soal.bentuk}) termasuk sumber ${soal.benar.toLowerCase()} karena ${soal.keterangan}.`;
+        tubuhSoal = `
+          <span class="badge">Bentuk: ${soal.bentuk}</span>
+          <h2>${escapeHTML(soal.judul)}</h2>
+          <p class="text-muted">${escapeHTML(soal.keterangan)}</p>
+        `;
+        opsiHTML = `<div class="choice-row-2">` + ['Primer', 'Sekunder'].map(opt => {
+          let cls = 'choice-btn';
+          if (sudahJawab) {
+            if (opt === soal.benar) cls += ' correct-ans';
+            else if (opt === state.kuisTerjawab) cls += ' wrong-ans';
+          }
+          return `<button type="button" class="${cls}" ${sudahJawab ? 'disabled' : `data-action="jawab-kuis" data-val="${opt}"`}>${opt}</button>`;
+        }).join('') + `</div>`;
+      } else if (mode === 'pg') {
+        isBenar = state.kuisTerjawab === soal.benar;
+        teksPenjelasan = soal.penjelasan;
+        tubuhSoal = `<h2>${escapeHTML(soal.tanya)}</h2>`;
+        opsiHTML = `<div class="stack-sm">` + soal.opsi.map((teksOpsi, oIdx) => {
+          let cls = 'choice-btn';
+          if (sudahJawab) {
+            if (oIdx === soal.benar) cls += ' correct-ans';
+            else if (oIdx === state.kuisTerjawab) cls += ' wrong-ans';
+          }
+          return `<button type="button" class="${cls}" style="text-align:left; padding:12px;" ${sudahJawab ? 'disabled' : `data-action="jawab-kuis" data-val="${oIdx}"`}>${escapeHTML(teksOpsi)}</button>`;
+        }).join('') + `</div>`;
+      } else {
+        isBenar = state.kuisTerjawab === soal.benar;
+        teksPenjelasan = soal.penjelasan;
+        tubuhSoal = `<h2>"${escapeHTML(soal.pernyataan)}"</h2>`;
+        opsiHTML = `<div class="choice-row-2">` + ['Hoaks', 'Fakta'].map(opt => {
+          let cls = 'choice-btn';
+          if (sudahJawab) {
+            if (opt === soal.benar) cls += ' correct-ans';
+            else if (opt === state.kuisTerjawab) cls += ' wrong-ans';
+          }
+          return `<button type="button" class="${cls}" ${sudahJawab ? 'disabled' : `data-action="jawab-kuis" data-val="${opt}"`}>${opt}</button>`;
+        }).join('') + `</div>`;
+      }
+
+      const feedbackHTML = sudahJawab ? `
+        <div class="feedback-box ${isBenar ? 'ok' : 'bad'}">
+          <div class="feedback-head">
+            ${isBenar ? ICONS.centang : ICONS.silang}
+            <span>${isBenar ? 'Tepat' : 'Kurang tepat'}</span>
+          </div>
+          <p>${escapeHTML(teksPenjelasan)}</p>
+        </div>
+        <button type="button" class="btn btn-primary btn-block" data-action="soal-berikutnya">
+          ${idx + 1 < total ? 'Soal Berikutnya' : 'Lihat Skor Akhir'}
+        </button>
+      ` : '';
+
+      return `
+        <div class="row-between">
+          <h1 id="page-title" tabindex="-1">${judulMode}</h1>
+          <button type="button" class="btn btn-secondary" data-action="goto" data-target="kuis">Keluar</button>
+        </div>
+
+        <div>
+          <div class="row-between">
+            <span class="text-muted">Soal ${idx + 1} dari ${total}</span>
+            <strong>Skor: ${state.kuisBenar}</strong>
+          </div>
+          <div class="progress-track" role="progressbar" aria-valuenow="${persenJalan}" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress-fill" style="width: ${persenJalan}%"></div>
+          </div>
+        </div>
+
+        <div class="card stack-md">
+          ${tubuhSoal}
+          ${opsiHTML}
+          ${feedbackHTML}
+        </div>
+      `;
+    }
+
+    function renderProfil(stats) {
+      const p = state.progres;
+      const namaAman = escapeHTML(p.nama);
+
+      const lencanaHTML = LENCANA.map(l => {
+        const aktif = stats.lencanaTerbuka[l.id];
+        return `
+          <div class="badge-card ${aktif ? 'unlocked' : ''}">
+            <div class="row-between" style="margin-bottom:6px;">
+              <span style="color:var(--accent-sepia);" aria-hidden="true">${ICONS[l.ikon] || ICONS.lencana}</span>
+              <span class="badge ${aktif ? 'badge-done' : ''}">${aktif ? 'Diraih' : 'Terkunci'}</span>
+            </div>
+            <strong style="display:block; font-family:var(--font-serif);">${escapeHTML(l.nama)}</strong>
+            <span class="text-muted" style="font-size:0.78rem;">${escapeHTML(l.syarat)}</span>
+          </div>
+        `;
+      }).join('');
+
+      const riwayatKasusHTML = KASUS.map(k => {
+        const s = p.skorKasus[k.id];
+        return `
+          <div class="row-between" style="padding:6px 0; border-bottom:1px solid var(--border-line);">
+            <span>${escapeHTML(k.judul)}</span>
+            <strong>${typeof s === 'number' ? `${s}/60` : '-'}</strong>
+          </div>
+        `;
+      }).join('');
+
+      return `
+        <h1 id="page-title" tabindex="-1">Profil dan Capaian</h1>
+
+        <section class="card stack-sm">
+          <div class="row-between">
+            <div>
+              <h2>${namaAman}</h2>
+              <span class="text-muted">Peserta Didik Kelas X SMA</span>
+            </div>
+            <span class="badge badge-done" style="font-size:0.9rem;">${stats.totalPoin} Poin</span>
+          </div>
+          <p class="text-muted" style="font-size:0.8rem;">
+            Rincian poin: Materi selesai (${stats.jumlahMateri} x 10) + Skor Uji Sumber (${stats.totalUji}) + Skor Kuis (${stats.totalSoalKuisBenar} x 10).
+          </p>
+        </section>
+
+        <section class="card stack-sm">
+          <h2>Progres Per Bagian</h2>
+          <div class="row-between"><span>Materi Dipelajari</span><strong>${stats.jumlahMateri} / ${MATERI.length}</strong></div>
+          <div class="row-between"><span>Kasus Uji Sumber</span><strong>${stats.kasusSelesaiCount} / ${KASUS.length}</strong></div>
+          <div class="row-between"><span>Kuis Klasifikasi</span><strong>${p.skorKuis.klasifikasi} / ${KUIS_KLASIFIKASI.length}</strong></div>
+          <div class="row-between"><span>Kuis Pilihan Ganda</span><strong>${p.skorKuis.pg} / ${KUIS_PG.length}</strong></div>
+          <div class="row-between"><span>Kuis Hoaks atau Fakta</span><strong>${p.skorKuis.hoaks} / ${KUIS_HOAKS.length}</strong></div>
+        </section>
+
+        <section class="stack-sm">
+          <h2>6 Lencana Capaian</h2>
+          <div class="badge-grid">${lencanaHTML}</div>
+        </section>
+
+        <section class="card stack-sm">
+          <h2>Riwayat Nilai Terbaik Uji Sumber</h2>
+          ${riwayatKasusHTML}
+        </section>
+
+        <button type="button" class="btn btn-danger btn-block" data-action="open-modal">
+          Hapus progres
+        </button>
+      `;
+    }
+
+    function renderBantuan() {
+      return `
+        <h1 id="page-title" tabindex="-1">Bantuan &amp; Informasi</h1>
+
+        <section class="card stack-sm">
+          <h2>Cara Penggunaan</h2>
+          <p>1. Buka menu <strong>Pelajari</strong> untuk membaca 4 materi pokok penelitian sejarah dan tandai selesai setelah memahaminya.</p>
+          <p>2. Jelajahi <strong>Galeri Sumber</strong> untuk membedakan sumber primer dan sekunder dalam bentuk tertulis, lisan, maupun benda.</p>
+          <p>3. Masuk ke <strong>Uji Sumber</strong> untuk mempraktikkan kritik ekstern, kritik intern, dan menyimpulkan keaslian serta kredibilitas sumber.</p>
+          <p>4. Gunakan <strong>Latihan &amp; Kuis</strong> untuk menguji ketajaman analisis dan meraih seluruh lencana di halaman Profil.</p>
+        </section>
+
+        <section class="card stack-sm">
+          <h2>Tentang Aplikasi</h2>
+          <p><strong>SumberKu: Latihan Kritik Sumber Sejarah</strong> adalah media pembelajaran mandiri untuk mata pelajaran Sejarah kelas X SMA pada materi langkah penelitian sejarah, jenis-jenis sumber, kritik ekstern, dan kritik intern.</p>
+          <p>Aplikasi ini berjalan sepenuhnya secara luring (offline) dan menyimpan progres belajar pada peramban perangkat Anda.</p>
+        </section>
+
+        <section class="card-tint stack-sm">
+          <h2>Rujukan &amp; Catatan Guru</h2>
+          <p>Materi disusun berdasarkan capaian pembelajaran Sejarah Fase E (Kelas X SMA) mengenai konsep dasar ilmu sejarah dan penelitian sejarah.</p>
+          <p><strong>Catatan:</strong> Contoh kasus dan ilustrasi dalam aplikasi ini dirancang sebagai sarana latihan pedagogis dan perlu ditinjau serta didampingi oleh guru mata pelajaran Sejarah di kelas.</p>
+        </section>
+
+        <section class="card stack-sm" id="pwa-info-box">
+          <h2>Status Aplikasi Luring (PWA)</h2>
+          <p class="text-muted">${state.pwaReady ? 'Service Worker aktif. Aplikasi dapat dibuka kembali tanpa koneksi internet.' : 'Menyiapkan dukungan akses luring pada peramban ini.'}</p>
+          ${state.isInstalled
+            ? '<span class="badge badge-done">Aplikasi Sudah Terpasang</span>'
+            : '<button type="button" class="btn btn-primary btn-block" data-action="install-pwa">Install Aplikasi ke Perangkat</button>'
+          }
+        </section>
+      `;
+    }
+
+    function render() {
+      const stats = hitungStatistik();
+      const main = document.getElementById('app-main');
+      const headerPts = document.getElementById('header-points');
+      if (headerPts) headerPts.textContent = `${stats.totalPoin} Poin`;
+
+      const navMap = {
+        beranda: ['beranda', 'pelajari', 'materiDetail', 'galeri', 'galeriDetail', 'uji', 'ujiKasus', 'kuis', 'kuisMain'],
+        profil: ['profil'],
+        bantuan: ['bantuan']
+      };
+      ['beranda', 'profil', 'bantuan'].forEach(key => {
+        const btn = document.getElementById(`nav-${key}`);
+        if (!btn) return;
+        if (navMap[key].includes(state.halaman)) {
+          btn.setAttribute('aria-current', 'page');
+        } else {
+          btn.removeAttribute('aria-current');
+        }
+      });
+
+      switch (state.halaman) {
+        case 'pelajari':
+          main.innerHTML = renderPelajari();
+          break;
+        case 'materiDetail':
+          main.innerHTML = renderMateriDetail();
+          break;
+        case 'galeri':
+          main.innerHTML = renderGaleri();
+          break;
+        case 'galeriDetail':
+          main.innerHTML = renderGaleriDetail();
+          break;
+        case 'uji':
+          main.innerHTML = renderUjiDaftar();
+          break;
+        case 'ujiKasus':
+          main.innerHTML = renderUjiKasus();
+          break;
+        case 'kuis':
+          main.innerHTML = renderKuisMenu();
+          break;
+        case 'kuisMain':
+          main.innerHTML = renderKuisMain();
+          break;
+        case 'profil':
+          main.innerHTML = renderProfil(stats);
+          break;
+        case 'bantuan':
+          main.innerHTML = renderBantuan();
+          break;
+        default:
+          main.innerHTML = renderBeranda(stats);
+      }
+    }
+
+    /* ==========================================================================
+       BAGIAN 5: PENANGANAN INTERAKSI (EVENT DELEGATION) & INISIALISASI
+       ========================================================================== */
+
+    function mulaiKasus(kasusId) {
+      state.kasusAktifId = kasusId;
+      state.tahapUji = 1;
+      state.jawabanUji = {
+        ekstern: [null, null],
+        intern: [null, null],
+        putusanAsli: null,
+        putusanKredibel: null
+      };
+      pindahHalaman('ujiKasus');
+    }
+
+    function mulaiKuis(mode) {
+      state.kuisMode = mode;
+      state.kuisIndex = 0;
+      state.kuisBenar = 0;
+      state.kuisTerjawab = null;
+      pindahHalaman('kuisMain');
+    }
+
+    document.addEventListener('click', (event) => {
+      const navBtn = event.target.closest('[data-nav]');
+      if (navBtn) {
+        pindahHalaman(navBtn.getAttribute('data-nav'));
+        return;
+      }
+
+      const actionBtn = event.target.closest('[data-action]');
+      if (!actionBtn) return;
+
+      const action = actionBtn.getAttribute('data-action');
+
+      if (action === 'goto') {
+        pindahHalaman(actionBtn.getAttribute('data-target'));
+      } else if (action === 'lanjutkan') {
+        const materiBelum = MATERI.find(m => !state.progres.materiSelesai.includes(m.id));
+        if (materiBelum) {
+          state.materiAktifId = materiBelum.id;
+          pindahHalaman('materiDetail');
+          return;
+        }
+        const kasusBelum = KASUS.find(k => typeof state.progres.skorKasus[k.id] !== 'number');
+        if (kasusBelum) {
+          mulaiKasus(kasusBelum.id);
+          return;
+        }
+        pindahHalaman('kuis');
+      } else if (action === 'buka-materi') {
+        state.materiAktifId = actionBtn.getAttribute('data-id');
+        pindahHalaman('materiDetail');
+      } else if (action === 'tandai-materi') {
+        const mId = actionBtn.getAttribute('data-id');
+        if (!state.progres.materiSelesai.includes(mId)) {
+          state.progres.materiSelesai.push(mId);
+          simpanProgres(state.progres);
+          umumkan('Materi ditandai selesai. Kamu mendapatkan 10 poin.');
+          render();
+        }
+      } else if (action === 'set-filter') {
+        state.filterGaleri = actionBtn.getAttribute('data-filter');
+        render();
+      } else if (action === 'buka-galeri') {
+        state.galeriAktifId = actionBtn.getAttribute('data-id');
+        pindahHalaman('galeriDetail');
+      } else if (action === 'mulai-kasus') {
+        mulaiKasus(actionBtn.getAttribute('data-id'));
+      } else if (action === 'jawab-uji') {
+        const jenis = actionBtn.getAttribute('data-jenis');
+        const qIdx = Number(actionBtn.getAttribute('data-qidx'));
+        const val = actionBtn.getAttribute('data-val');
+        if (state.jawabanUji[jenis][qIdx] === null) {
+          state.jawabanUji[jenis][qIdx] = val;
+          const kasus = KASUS.find(k => k.id === state.kasusAktifId);
+          const soal = kasus[jenis][qIdx];
+          const tepat = val === soal.benar;
+          umumkan(`${tepat ? 'Tepat.' : 'Kurang tepat.'} ${soal.penjelasan}`);
+          render();
+        }
+      } else if (action === 'lanjut-tahap-uji') {
+        state.tahapUji += 1;
+        render();
+        window.scrollTo(0, 0);
+      } else if (action === 'pilih-putusan') {
+        const field = actionBtn.getAttribute('data-field');
+        const val = actionBtn.getAttribute('data-val');
+        state.jawabanUji[field] = val;
+        render();
+      } else if (action === 'selesai-uji') {
+        const kasus = KASUS.find(k => k.id === state.kasusAktifId);
+        let benarCount = 0;
+        if (state.jawabanUji.ekstern[0] === kasus.ekstern[0].benar) benarCount++;
+        if (state.jawabanUji.ekstern[1] === kasus.ekstern[1].benar) benarCount++;
+        if (state.jawabanUji.intern[0] === kasus.intern[0].benar) benarCount++;
+        if (state.jawabanUji.intern[1] === kasus.intern[1].benar) benarCount++;
+        if (state.jawabanUji.putusanAsli === kasus.putusanAsli) benarCount++;
+        if (state.jawabanUji.putusanKredibel === kasus.putusanKredibel) benarCount++;
+        const skorBaru = benarCount * 10;
+
+        const skorLama = state.progres.skorKasus[kasus.id] || 0;
+        if (skorBaru > skorLama || typeof state.progres.skorKasus[kasus.id] !== 'number') {
+          state.progres.skorKasus[kasus.id] = skorBaru;
+          simpanProgres(state.progres);
+        }
+        state.tahapUji = 4;
+        umumkan(`Uji sumber selesai. Skor kamu ${skorBaru} dari 60.`);
+        render();
+        window.scrollTo(0, 0);
+      } else if (action === 'mulai-kuis') {
+        mulaiKuis(actionBtn.getAttribute('data-mode'));
+      } else if (action === 'jawab-kuis') {
+        if (state.kuisTerjawab !== null) return;
+        const mode = state.kuisMode;
+        const bank = mode === 'klasifikasi' ? KUIS_KLASIFIKASI : (mode === 'pg' ? KUIS_PG : KUIS_HOAKS);
+        const soal = bank[state.kuisIndex];
+        const rawVal = actionBtn.getAttribute('data-val');
+        const val = mode === 'pg' ? Number(rawVal) : rawVal;
+
+        state.kuisTerjawab = val;
+        const tepat = val === soal.benar;
+        if (tepat) state.kuisBenar += 1;
+
+        umumkan(tepat ? 'Jawaban tepat.' : 'Jawaban kurang tepat.');
+        render();
+      } else if (action === 'soal-berikutnya') {
+        const mode = state.kuisMode;
+        const bank = mode === 'klasifikasi' ? KUIS_KLASIFIKASI : (mode === 'pg' ? KUIS_PG : KUIS_HOAKS);
+        state.kuisIndex += 1;
+        state.kuisTerjawab = null;
+
+        if (state.kuisIndex >= bank.length) {
+          const skorLama = state.progres.skorKuis[mode] || 0;
+          if (state.kuisBenar > skorLama) {
+            state.progres.skorKuis[mode] = state.kuisBenar;
+            simpanProgres(state.progres);
+          }
+          umumkan(`Kuis selesai. Skor kamu ${state.kuisBenar} dari ${bank.length}.`);
+        }
+        render();
+        window.scrollTo(0, 0);
+      } else if (action === 'open-modal') {
+        const modal = document.getElementById('confirm-modal');
+        if (modal) {
+          modal.hidden = false;
+          const cancelBtn = modal.querySelector('[data-action="close-modal"]');
+          if (cancelBtn) cancelBtn.focus();
+        }
+      } else if (action === 'close-modal') {
+        const modal = document.getElementById('confirm-modal');
+        if (modal) modal.hidden = true;
+      } else if (action === 'confirm-reset') {
+        state.progres = buatProgresAwal();
+        simpanProgres(state.progres);
+        const modal = document.getElementById('confirm-modal');
+        if (modal) modal.hidden = true;
+        umumkan('Semua progres belajar telah dihapus.');
+        render();
+      } else if (action === 'install-pwa') {
+        picuInstallPWA();
+      } else if (action === 'close-install-modal') {
+        const instModal = document.getElementById('install-modal');
+        if (instModal) instModal.hidden = true;
+      }
+    });
+
+    document.getElementById('btn-install-header').addEventListener('click', () => {
+      picuInstallPWA();
+    });
+
+    document.addEventListener('input', (event) => {
+      if (event.target && event.target.id === 'input-nama') {
+        const nilai = event.target.value.trim();
+        state.progres.nama = nilai ? nilai.slice(0, 40) : 'Pelajar Sejarah';
+        simpanProgres(state.progres);
+        const sapaanStrong = document.querySelector('#app-main section p strong');
+        if (sapaanStrong) {
+          sapaanStrong.textContent = state.progres.nama;
+        }
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        const modal = document.getElementById('confirm-modal');
+        if (modal && !modal.hidden) modal.hidden = true;
+        const instModal = document.getElementById('install-modal');
+        if (instModal && !instModal.hidden) instModal.hidden = true;
+      }
+    });
+
+    /* ==========================================================================
+       BAGIAN 6: REGISTRASI SERVICE WORKER (sw.js) & PEMASANGAN PWA
+       ========================================================================== */
+
+    function siapkanPWA() {
+      // Daftarkan file sw.js eksternal untuk hosting HTTPS / localhost
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js')
+            .then(() => {
+              state.pwaReady = true;
+              if (state.halaman === 'bantuan') render();
+            })
+            .catch(() => {
+              // Gagal mendaftarkan SW jika dibuka via protokol file://
+            });
+        });
+      }
+
+      // Tangkap event beforeinstallprompt dari peramban
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        state.deferredPrompt = e;
+        const headerBtn = document.getElementById('btn-install-header');
+        if (headerBtn && !state.isInstalled) {
+          headerBtn.hidden = false;
+        }
+        render();
+      });
+
+      window.addEventListener('appinstalled', () => {
+        state.isInstalled = true;
+        state.deferredPrompt = null;
+        const headerBtn = document.getElementById('btn-install-header');
+        if (headerBtn) headerBtn.hidden = true;
+        const instModal = document.getElementById('install-modal');
+        if (instModal) instModal.hidden = true;
+        umumkan('Aplikasi SumberKu berhasil terpasang di perangkat Anda.');
+        render();
+      });
+
+      if ((window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || window.navigator.standalone === true) {
+        state.isInstalled = true;
+      }
+
+      const headerBtn = document.getElementById('btn-install-header');
+      if (headerBtn && !state.isInstalled) {
+        headerBtn.hidden = false;
+      }
+    }
+
+    async function picuInstallPWA() {
+      // Jika peramban mendukung prompt instalasi native (Chrome/Edge/Android/Desktop), langsung munculkan otomatis
+      if (state.deferredPrompt) {
+        try {
+          const promptEvent = state.deferredPrompt;
+          state.deferredPrompt = null;
+          await promptEvent.prompt();
+          const choice = await promptEvent.userChoice;
+          if (choice && choice.outcome === 'accepted') {
+            state.isInstalled = true;
+            const headerBtn = document.getElementById('btn-install-header');
+            if (headerBtn) headerBtn.hidden = true;
+            umumkan('Aplikasi SumberKu berhasil dipasang ke perangkat.');
+          }
+          render();
+          return;
+        } catch (err) {
+          // Lanjut ke panduan manual jika prompt gagal
+        }
+      }
+
+      // Panduan untuk iOS Safari atau peramban yang tidak memicu prompt otomatis
+      const instModal = document.getElementById('install-modal');
+      const hintEl = document.getElementById('install-modal-hint');
+      if (instModal && hintEl) {
+        hintEl.textContent = 'Pada iPhone/iPad (Safari), ketuk tombol Bagikan lalu pilih "Tambahkan ke Layar Utama". Pada Chrome/Edge, pilih menu titik tiga di pojok peramban lalu pilih "Install Aplikasi".';
+        instModal.hidden = false;
+        const doneBtn = instModal.querySelector('[data-action="close-install-modal"]');
+        if (doneBtn) doneBtn.focus();
+      }
+      umumkan('Panduan pemasangan aplikasi dibuka.');
+    }
+
+    // Inisialisasi ikon statis, splash screen, PWA, dan render perdana
+    (function init() {
+      const modal = document.getElementById('confirm-modal');
+      if (modal) modal.hidden = true;
+      const instModal = document.getElementById('install-modal');
+      if (instModal) instModal.hidden = true;
+
+      document.getElementById('splash-logo').innerHTML = ICONS.gulungan;
+      document.getElementById('header-logo').innerHTML = ICONS.gulungan;
+      document.getElementById('icon-nav-beranda').innerHTML = ICONS.rumah;
+      document.getElementById('icon-nav-profil').innerHTML = ICONS.pengguna;
+      document.getElementById('icon-nav-bantuan').innerHTML = ICONS.tanya;
+
+      siapkanPWA();
+      render();
+
+      window.setTimeout(() => {
+        const splash = document.getElementById('splash-screen');
+        if (splash) {
+          splash.classList.add('fade-out');
+          window.setTimeout(() => {
+            splash.remove();
+          }, 400);
+        }
+      }, 1150);
+    })();
+  </script>
+</body>
+</html>
